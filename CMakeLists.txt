@@ -3,4 +3,6 @@ project(LoxCPP)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(LoxCPP main.cpp)
+file (GLOB SOURCE_FILES src/main.cpp src/Token.cpp)
+
+add_executable(LoxCPP ${SOURCE_FILES})
