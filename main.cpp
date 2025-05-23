@@ -3,6 +3,8 @@
 #include <fstream>
 #include <iostream>
 
+bool hadError = false;
+
 using Token = std::string;
 
 class Scanner {
@@ -16,6 +18,15 @@ public:
 private:
     std::vector<Token> tokens_;
 };
+
+static void report(int line, std::string where, std::string message) {
+    std::cout << "[line " + std::to_string(line) + "] Error" + where + ": " + message;
+    hadError = true;
+}
+
+static void error (int line, std::string message) {
+    report(line, "", message);
+}
 
 
 void run(std::string src) {
@@ -39,6 +50,9 @@ void runFile(std::filesystem::path path) {
     file.read(src.data(), static_cast<ptrdiff_t>(size));
 
     run(src);
+
+    if (hadError)
+        std::exit(65);
 }
 
 void runPrompt() {
@@ -52,6 +66,8 @@ void runPrompt() {
             return;
 
         run(line);
+
+        hadError = false;
     }
 }
 

@@ -1,3 +1,0 @@
-/Users/dustinburda/Desktop/Programming/LoxCPP/cmake-build-debug/CMakeFiles/LoxCPP.dir
-/Users/dustinburda/Desktop/Programming/LoxCPP/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/dustinburda/Desktop/Programming/LoxCPP/cmake-build-debug/CMakeFiles/rebuild_cache.dir
