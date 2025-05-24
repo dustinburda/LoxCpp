@@ -9,7 +9,7 @@
 
 
 void run(std::string src) {
-    Scanner scanner;
+    Scanner scanner {src} ;
     std::vector<Token> tokens = scanner.scanTokens();
 
     for (auto token : tokens)  {

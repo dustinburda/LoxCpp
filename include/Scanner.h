@@ -22,6 +22,11 @@ private:
     std::optional<char> advance();
     void addToken(TokenType type);
     bool match (char c);
+    char peek();
+    char peekNext();
+    void string();
+    void number();
+    void identifier_keyword();
     void scanToken();
 
     std::string src_;
