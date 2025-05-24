@@ -10,13 +10,18 @@
 
 #include "TokenType.h"
 
+using LiteralType = std::variant<std::string, int, double>;
+
 class Token {
 public:
     Token();
+    Token(TokenType type, std::string lexeme, LiteralType literal, int line);
+
+    std::string toString() const;
 private:
     TokenType type_;
     std::string lexeme_;
-    std::variant<std::string, int, double> literal_;
+    LiteralType literal_;
     int line_;
 };
 

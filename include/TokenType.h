@@ -18,7 +18,9 @@ enum class TokenType {
     GREATER, GREATER_EQUAL,
     LESS, LESS_EQUAL,
 // Literals.
+
     IDENTIFIER, STRING, NUMBER,
+
 // Keywords.
     AND, CLASS, ELSE, FALSE, FUN, FOR, IF, NIL, OR,
     PRINT, RETURN, SUPER, THIS, TRUE, VAR, WHILE,
@@ -26,7 +28,28 @@ enum class TokenType {
     EOF_
 };
 
-std::unordered_map<std::string, TokenType> Keyword_TokenType {
+static std::unordered_map<std::string, TokenType> Literal_TokenType {
+        {"(", TokenType::LEFT_PAREN},
+        {")", TokenType::RIGHT_BRACE},
+        {"{", TokenType::LEFT_BRACE},
+        {"}", TokenType::RIGHT_BRACE},
+        {",", TokenType::COMMA},
+        {".", TokenType::DOT},
+        {"+", TokenType::PLUS},
+        {"-", TokenType::MINUS},
+        {";", TokenType::SEMICOLON},
+        {"/", TokenType::SLASH},
+        {"*", TokenType::STAR},
+
+        {"!", TokenType::BANG},
+        {"!=", TokenType::BANG_EQUAL},
+        {"=", TokenType::EQUAL},
+        {"==", TokenType::EQUAL_EQUAL},
+        {">", TokenType::GREATER},
+        {">=", TokenType::GREATER_EQUAL},
+        {"<", TokenType::LESS},
+        {"<=", TokenType::LESS_EQUAL},
+
         {"AND", TokenType::AND},
         {"CLASS", TokenType::CLASS},
         {"ELSE", TokenType::ELSE},
@@ -44,6 +67,48 @@ std::unordered_map<std::string, TokenType> Keyword_TokenType {
         {"VAR", TokenType::VAR},
         {"WHILE", TokenType::WHILE}
 };
+
+static std::unordered_map<TokenType, std::string> TokenType_Literal {
+        {TokenType::LEFT_PAREN, "("},
+        {TokenType::RIGHT_BRACE, ")"},
+        {TokenType::LEFT_BRACE, "{"},
+        {TokenType::RIGHT_BRACE, "}"},
+        {TokenType::COMMA, ","},
+        {TokenType::DOT, "."},
+        {TokenType::PLUS, "+"},
+        {TokenType::MINUS, "-"},
+        {TokenType::SEMICOLON, ";"},
+        {TokenType::SLASH, "/"},
+        {TokenType::STAR, "*"},
+
+        {TokenType::BANG, "!"},
+        {TokenType::BANG_EQUAL, "!="},
+        {TokenType::EQUAL, "="},
+        {TokenType::EQUAL_EQUAL, "=="},
+        {TokenType::GREATER, ">"},
+        {TokenType::GREATER_EQUAL, ">="},
+        {TokenType::LESS, "<"},
+        {TokenType::LESS_EQUAL, "<="},
+
+
+        {TokenType::AND, "AND"},
+        {TokenType::CLASS, "CLASS"},
+        {TokenType::ELSE, "ELSE"},
+        {TokenType::FALSE, "FALSE"},
+        {TokenType::FUN, "FUN"},
+        {TokenType::FOR, "FOR"},
+        {TokenType::IF, "IF"},
+        {TokenType::NIL, "NIL"},
+        {TokenType::OR, "OR"},
+        {TokenType::PRINT, "PRINT"},
+        {TokenType::RETURN, "RETURN"},
+        {TokenType::SUPER, "SUPER"},
+        {TokenType::THIS, "THIS"},
+        {TokenType::TRUE, "TRUE"},
+        {TokenType::VAR, "VAR"},
+        {TokenType::WHILE, "WHILE"}
+};
+
 
 
 #endif //LOXCPP_TOKENTYPE_H

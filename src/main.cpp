@@ -3,30 +3,9 @@
 #include <fstream>
 #include <iostream>
 
-bool hadError = false;
+#include "../include/Error.h"
+#include "../include/Scanner.h"
 
-using Token = std::string;
-
-class Scanner {
-public:
-    Scanner() = default;
-    Scanner(std::string src);
-
-    std::vector<Token> scanTokens() {
-        return tokens_;
-    }
-private:
-    std::vector<Token> tokens_;
-};
-
-static void report(int line, std::string where, std::string message) {
-    std::cout << "[line " + std::to_string(line) + "] Error" + where + ": " + message;
-    hadError = true;
-}
-
-static void error (int line, std::string message) {
-    report(line, "", message);
-}
 
 
 void run(std::string src) {
@@ -34,7 +13,7 @@ void run(std::string src) {
     std::vector<Token> tokens = scanner.scanTokens();
 
     for (auto token : tokens)  {
-        std::cout << token << "\n";
+        std::cout << token.toString() << "\n";
     }
 
 }
