@@ -3,6 +3,10 @@ project(LoxCPP)
 
 set(CMAKE_CXX_STANDARD 17)
 
-file (GLOB SOURCE_FILES src/main.cpp src/Token.cpp src/Scanner.cpp)
+file (GLOB SOURCE_FILES
+        src/main.cpp
+        src/Token.cpp
+        src/Scanner.cpp
+        src/Binary.cpp)
 
 add_executable(LoxCPP ${SOURCE_FILES})
