@@ -15,6 +15,8 @@ class Unary;
 template <typename R>
 class ExprVisitor {
 public:
+    ~ExprVisitor() = default;
+
     virtual R visitBinary(Binary& expr) = 0;
     virtual R visitGrouping(Grouping& expr) = 0;
     virtual R visitLiteral(Literal& expr) = 0;

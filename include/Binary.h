@@ -16,7 +16,6 @@ public:
     Binary(std::shared_ptr<Expression> left, Token _operator, std::shared_ptr<Expression> right);
     std::any accept(ExprVisitor<std::any>& visitor) override;
 
-private:
     std::shared_ptr<Expression> left_;
     std::shared_ptr<Expression> right_;
     Token operator_;

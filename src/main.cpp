@@ -49,12 +49,33 @@ void runPrompt() {
 }
 
 
+#include "../include/ExprPrinter.h"
+#include "../include/Expression.h"
+
+#include "../include/Binary.h"
+#include "../include/Grouping.h"
+#include "../include/Literal.h"
+#include "../include/Unary.h"
+
+
 
 int main(int argc, char** argv) {
-    if (argc > 2)
-        std::exit(64);
-    else if (argc == 2)
-        runFile(argv[0]);
-    else
-        runPrompt();
+    auto expr_ptr = std::make_shared<Binary>(
+            std::make_shared<Unary>(
+                std::make_shared<Literal>(123),
+                Token(TokenType::MINUS, "-", "-", 1)
+            ),
+            Token(TokenType::STAR, "*", "*", 1),
+            std::make_shared<Grouping>(
+                std::make_shared<Literal>(45.67)
+            ));
+    ExprPrinter printer;
+    std::cout << printer.print(expr_ptr.get());
+
+//    if (argc > 2)
+//        std::exit(64);
+//    else if (argc == 2)
+//        runFile(argv[0]);
+//    else
+//        runPrompt();
 }

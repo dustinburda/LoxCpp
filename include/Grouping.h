@@ -14,7 +14,7 @@ public:
     ~Grouping() override {}
     Grouping(std::shared_ptr<Expression> expr);
     std::any accept(ExprVisitor<std::any>& visitor) override;
-private:
+
     std::shared_ptr<Expression> expr_;
 };
 

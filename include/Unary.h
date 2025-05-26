@@ -15,7 +15,7 @@ public:
     ~Unary() override {}
     Unary(std::shared_ptr<Expression> right, Token _operator);
     std::any accept(ExprVisitor<std::any>& visitor) override;
-private:
+
     std::shared_ptr<Expression> right_;
     Token operator_;
 };

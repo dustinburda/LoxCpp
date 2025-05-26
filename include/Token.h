@@ -18,7 +18,7 @@ public:
     Token(TokenType type, std::string lexeme, LiteralType literal, int line);
 
     std::string toString() const;
-private:
+
     TokenType type_;
     std::string lexeme_;
     LiteralType literal_;
