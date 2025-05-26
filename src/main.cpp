@@ -6,8 +6,6 @@
 #include "../include/Error.h"
 #include "../include/Scanner.h"
 
-
-
 void run(std::string src) {
     Scanner scanner {src} ;
     std::vector<Token> tokens = scanner.scanTokens();

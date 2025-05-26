@@ -12,7 +12,9 @@
 
 class Literal : public Expression {
 public:
+    ~Literal() override {}
     Literal(std::variant<std::string, int, double> literal);
+    std::any accept(ExprVisitor<std::any>& visitor) override;
 private:
     std::variant<std::string, int, double> literal_;
 };

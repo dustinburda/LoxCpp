@@ -10,9 +10,11 @@
 #include "Expression.h"
 #include "Token.h"
 
-class Binary : public Expression{
+class Binary : public Expression {
 public:
+    ~Binary() override {}
     Binary(std::shared_ptr<Expression> left, Token _operator, std::shared_ptr<Expression> right);
+    std::any accept(ExprVisitor<std::any>& visitor) override;
 
 private:
     std::shared_ptr<Expression> left_;

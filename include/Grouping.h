@@ -5,14 +5,17 @@
 #ifndef LOXCPP_GROUPING_H
 #define LOXCPP_GROUPING_H
 
-#include "Expression.h"
+#include <memory>
 
+#include "Expression.h"
 
 class Grouping : public Expression {
 public:
-    Grouping(Expression expr);
+    ~Grouping() override {}
+    Grouping(std::shared_ptr<Expression> expr);
+    std::any accept(ExprVisitor<std::any>& visitor) override;
 private:
-    Expression expr_;
+    std::shared_ptr<Expression> expr_;
 };
 
 

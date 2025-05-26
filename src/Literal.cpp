@@ -6,3 +6,7 @@
 
 Literal::Literal(std::variant<std::string, int, double> literal) :
     literal_{literal} {}
+
+std::any Literal::accept(ExprVisitor<std::any>& visitor) {
+    return visitor.visitLiteral(*this);
+}

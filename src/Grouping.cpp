@@ -4,5 +4,10 @@
 
 #include "../include/Grouping.h"
 
-Grouping::Grouping(Expression expr)
+Grouping::Grouping(std::shared_ptr<Expression> expr)
     : expr_{expr} {}
+
+
+std::any Grouping::accept(ExprVisitor<std::any>& visitor) {
+    return visitor.visitGrouping(*this);
+}
