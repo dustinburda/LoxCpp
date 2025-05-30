@@ -12,7 +12,7 @@ Parser::Parser(std::vector<Token> tokens) : tokens_{tokens}, current_{0} {}
 
 std::shared_ptr<Expression> Parser::parse() {
     try {
-        expression();
+        return expression();
     } catch (std::exception& e) {
         return nullptr;
     }
