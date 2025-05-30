@@ -19,13 +19,17 @@ it in C++ 17.
 
 ## Building
 
+_Stay Tuned_
+
 ## Usage
+
+_Stay Tuned_
 
 ## TODO
 - [x] Chapter 4 (Scanning)
 - [x] Chapter 5 (Data Representation)
-- [ ] Chapter 6 (Parsing Expressions)
-- [ ] Chapter 7
+- [x] Chapter 6 (Parsing Expressions)
+- [x] Chapter 7 (Evaluating Expressions)
 - [ ] Chapter 8
 - [ ] Chapter 9
 - [ ] Chapter 10

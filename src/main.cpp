@@ -57,8 +57,6 @@ void runPrompt() {
 #include "../include/Literal.h"
 #include "../include/Unary.h"
 
-
-
 int main(int argc, char** argv) {
     auto expr_ptr = std::make_shared<Binary>(
             std::make_shared<Unary>(
