@@ -25,7 +25,7 @@ private:
 class Parser {
 public:
     Parser(std::vector<Token> tokens);
-
+    std::shared_ptr<Expression> parse();
 private:
     bool isAtEnd();
     bool check(TokenType type);
@@ -35,6 +35,7 @@ private:
     Token previous();
 
     Token consume(TokenType type, std::string error_message);
+    void synchronize();
 
     std::shared_ptr<Expression> expression();
     std::shared_ptr<Expression> equality();

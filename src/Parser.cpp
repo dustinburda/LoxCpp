@@ -10,6 +10,14 @@
 
 Parser::Parser(std::vector<Token> tokens) : tokens_{tokens}, current_{0} {}
 
+std::shared_ptr<Expression> Parser::parse() {
+    try {
+        expression();
+    } catch (std::exception& e) {
+        return nullptr;
+    }
+}
+
 bool Parser::isAtEnd() {
     return peek().type_ == TokenType::EOF_;
 }
@@ -135,6 +143,29 @@ Token Parser::consume(TokenType type, std::string error_message) {
     throw error(peek(), error_message);
 }
 
+void Parser::synchronize() {
+    advance();
+
+    while (!isAtEnd()) {
+        if (previous().type_ == TokenType::SEMICOLON)
+            return;
+
+        switch (peek().type_) {
+            case TokenType::CLASS:
+            case TokenType::FUN:
+            case TokenType::VAR:
+            case TokenType::FOR:
+            case TokenType::IF:
+            case TokenType::WHILE:
+            case TokenType::PRINT:
+            case TokenType::RETURN:
+                return;
+        }
+
+        advance();
+    }
+}
+
 std::shared_ptr<Expression> Parser::primary() {
     if (match({TokenType::NUMBER,TokenType::STRING}))
         return std::make_shared<Literal>(previous().literal_);
@@ -150,5 +181,5 @@ std::shared_ptr<Expression> Parser::primary() {
         return expr;
     }
 
-    return nullptr;
+    throw error ( peek(), "Expect expression" );
 }
