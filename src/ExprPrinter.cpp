@@ -36,18 +36,7 @@ std::any ExprPrinter::visitGrouping(Grouping& expr) {
 }
 
 std::any ExprPrinter::visitLiteral(Literal& expr) {
-    auto variant = expr.literal_;
-
-    std::string print_val;
-    if (auto* val = std::get_if<int>(&variant)) {
-        print_val = std::to_string(*val);
-    } else if (auto* val = std::get_if<double>(&variant)) {
-        print_val = std::to_string(*val);
-    } else if (auto* val = std::get_if<std::string>(&variant)) {
-        print_val = *val;
-    }
-
-    return print_val;
+    return getLiteralValue(expr.literal_);
 }
 
 std::any ExprPrinter::visitUnary(Unary& expr) {

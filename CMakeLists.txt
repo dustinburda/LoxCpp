@@ -12,6 +12,8 @@ file (GLOB SOURCE_FILES
         src/Grouping.cpp
         src/Literal.cpp
         src/ExprPrinter.cpp
-        src/Parser.cpp)
+        src/Parser.cpp
+        src/Interpreter.cpp
+        src/ExprVisitor.cpp)
 
 add_executable(LoxCPP ${SOURCE_FILES})

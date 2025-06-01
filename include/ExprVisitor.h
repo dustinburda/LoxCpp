@@ -6,11 +6,18 @@
 #define LOXCPP_EXPIRVISITOR_H
 
 #include <memory>
+#include <string>
+#include <variant>
+#include <any>
 
 class Binary;
 class Grouping;
 class Literal;
 class Unary;
+
+using LiteralType = std::variant<std::string, int, double, bool>;
+
+std::any getLiteralValue(LiteralType literal);
 
 template <typename R>
 class ExprVisitor {
