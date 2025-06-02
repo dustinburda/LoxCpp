@@ -16,10 +16,12 @@ class Interpreter : public ExprVisitor<std::any> {
 public:
     std::any evaluate(Expression* expr);
 private:
-    virtual std::any visitBinary(Binary& expr) = 0;
-    virtual std::any visitGrouping(Grouping& expr) = 0;
-    virtual std::any visitLiteral(Literal& expr) = 0;
-    virtual std::any visitUnary(Unary& expr) = 0;
+    bool isEqual(std::any left, std::any right);
+
+    std::any visitBinary(Binary& expr) override;
+    std::any visitGrouping(Grouping& expr) override;
+    std::any visitLiteral(Literal& expr) override;
+    std::any visitUnary(Unary& expr) override;
 };
 
 

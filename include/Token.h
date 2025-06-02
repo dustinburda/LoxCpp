@@ -10,7 +10,7 @@
 
 #include "TokenType.h"
 
-using LiteralType = std::variant<std::string, int, double, bool>;
+using LiteralType = std::variant<std::string, double, bool>;
 
 class Token {
 public:

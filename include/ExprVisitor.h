@@ -15,7 +15,7 @@ class Grouping;
 class Literal;
 class Unary;
 
-using LiteralType = std::variant<std::string, int, double, bool>;
+using LiteralType = std::variant<std::string, double, bool>;
 
 std::any getLiteralValue(LiteralType literal);
 

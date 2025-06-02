@@ -4,7 +4,7 @@
 
 #include "../include/Literal.h"
 
-Literal::Literal(std::variant<std::string, int, double, bool> literal) :
+Literal::Literal(std::variant<std::string, double, bool> literal) :
     literal_{literal} {}
 
 std::any Literal::accept(ExprVisitor<std::any>& visitor) {

@@ -82,6 +82,7 @@ void Scanner::identifier_keyword() {
         advance();
 
     auto lexeme = src_.substr(start_, current_ - start_);
+    std::transform(lexeme.begin(), lexeme.end(), lexeme.begin(), [](auto char c) { return std::toupper(c); });
 
     if (Literal_TokenType.count(lexeme) == 0)
         tokens_.emplace_back(TokenType::IDENTIFIER, lexeme, lexeme, line_);
@@ -100,8 +101,7 @@ void Scanner::string() {
         error(line_, "Unterminated string");
 
     advance(); // "
-
-    std::string literal = src_.substr(start_ + 1, current_ - 1);
+    std::string literal = src_.substr(start_ + 1, current_ - start_ - 2);
     tokens_.emplace_back(TokenType::STRING, literal, literal, line_);
 }
 

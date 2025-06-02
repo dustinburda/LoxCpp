@@ -6,11 +6,9 @@
 #include "../include/ExprVisitor.h"
 
 
-std::any getLiteralValue(std::variant<std::string, int, double, bool> literal) {
+std::any getLiteralValue(std::variant<std::string, double, bool> literal) {
     std::any literal_value;
-    if (auto* val = std::get_if<int>(&literal)) {
-        literal_value = *val;
-    } else if (auto* val = std::get_if<double>(&literal)) {
+    if (auto* val = std::get_if<double>(&literal)) {
         literal_value = *val;
     } else if (auto* val = std::get_if<std::string>(&literal)) {
         literal_value = *val;

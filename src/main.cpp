@@ -6,6 +6,7 @@
 
 #include "../include/Error.h"
 #include "../include/ExprPrinter.h"
+#include "../include/Interpreter.h"
 #include "../include/Scanner.h"
 #include "../include/Parser.h"
 
@@ -19,7 +20,14 @@ void run(std::string src) {
     if (hadError)
         return;
 
-    std::cout << ExprPrinter{}.print(expr.get()) << "\n";
+    auto val = Interpreter{}.evaluate(expr.get());
+
+    if (val.type() == typeid(double))
+        std::cout << std::any_cast<double>(val) << std::endl;
+    else if (val.type() == typeid(std::string))
+        std::cout << std::any_cast<std::string>(val) << std::endl;
+    else if (val.type() == typeid(bool ))
+        std::cout << std::any_cast<bool>(val) << std::endl;
 }
 
 void runFile(std::filesystem::path path) {
